@@ -323,7 +323,7 @@ class RaptorXProtocol:
         
         self.payloads = []
         for category in ["js_breakers", "error_triggers", "prototype_pollution", "file_inclusion", "sql_injection"]:
-            if category in self.payloads_
+            if category in self.payloads_data:  # ✅ FIX: GANTI self.payloads_ JADI self.payloads_data
                 for payload in self.payloads_data[category]:
                     self.payloads.append({
                         "payload": payload,
@@ -478,8 +478,7 @@ class RaptorXProtocol:
                     result = future.result()
                     self.results["endpoints"].append(result)
                     progress.advance(task)
-        
-      # Simpan hasil
+                # Simpan hasil
         self.results["scan_end"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
         self.results["scan_duration"] = f"{time.time() - start_time:.2f}s"
         
@@ -575,7 +574,7 @@ if __name__ == "__main__":
     console = Console()
     
     rprint(Panel(
-        "[bold magenta]🦖 RAPTORX PROTOCOL v5 — ENUM → EXPLOIT → VERIFY[/bold magenta]\n"
+        "[bold magenta]🦖 RAPTORX PROTOCOL v5.1 — ENUM → EXPLOIT → VERIFY[/bold magenta]\n"
         "[bold yellow]TIDAK ASAL KIRIM REQUEST! LOGIKA KERAS! VERIFIKASI LENGKAP![/bold yellow]",
         title="🔥 RAPTORX PROTOCOL LAUNCH 🔥",
         border_style="bold cyan"
@@ -614,4 +613,4 @@ if __name__ == "__main__":
     raptor.run()
     
     rprint("\n[bold green]✅ RAPTORX PROTOCOL SELESAI! SEMUA VULN TERVERIFIKASI — TIDAK ADA LAGI FALSE POSITIVE![/bold green]")
-    rprint("[italic yellow]DM gue di Discord: LELEGILA — GUE BANTU SAMPE LO PAHAM![/italic yellow]")
+    rprint("[italic yellow]DM gue di Discord: Redzskid#1337 — GUE BANTU SAMPE LO PAHAM![/italic yellow]")
